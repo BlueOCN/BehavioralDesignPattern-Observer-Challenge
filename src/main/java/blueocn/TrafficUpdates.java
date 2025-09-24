@@ -1,8 +1,10 @@
 package blueocn;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
-public class TrafficUpdates {
+public class TrafficUpdates implements PropertyChangeListener {
 
   private ArrayList<String> updates = new ArrayList<>();
 
@@ -10,4 +12,8 @@ public class TrafficUpdates {
     updates.forEach(System.out::println);
   }
 
+  @Override
+  public void propertyChange(PropertyChangeEvent event) {
+    updates.add((String) event.getNewValue());
+  }
 }
